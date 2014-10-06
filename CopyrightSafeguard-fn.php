@@ -36,6 +36,12 @@
 	function copyrightsafeguardfn() {
 		$copyrightsafeguardauth = get_option( 'copyrightsafeguardauth', '' );
 		$csfnbuttontype = get_option( 'csfnbuttontype', 'button' );
+		$csfnleftoffset = get_option( 'csfnleftoffset', '0' );
+		$csfnleftoffsetunits = get_option( 'csfnleftoffsetunits', 'px' );
+		$csfntopoffset = get_option( 'csfntopoffset', '0' );
+		$csfntopoffsetunits = get_option( 'csfntopoffsetunits', 'px' );
+		$csfnstyle = 'display:block; margin-left:' . $csfnleftoffset . $csfnleftoffsetunits . '; margin-top: ' . $csfntopoffset . $csfntopoffsetunits . ';';
+		echo '<div style="' . $csfnstyle . '">';
 		if ($csfnbuttontype == 'button')
 			{
 			echo "<a onclick=\"window.open('http://www.copyrightsafeguard.com/safeguard/" . $copyrightsafeguardauth . "', 'Copyright', 'width=380,height=560,menubar=no,location=no,directories=no,scrollbars=no, left='+(window.screenX+200)+',top='+(window.screenY+100)); return false;\" href=\"http://www.copyrightsafeguard.com/safeguard/" . $copyrightsafeguardauth . "\" target=\"_blank\"><img src=\"http://www.copyrightsafeguard.com/images/copyright-safeguard.png\" width=\"100\" height=\"42\"></a>";
@@ -48,6 +54,7 @@
 			{
 			echo "<a onclick=\"window.open('http://www.copyrightsafeguard.com/safeguard/" . $copyrightsafeguardauth . "', 'Copyright', 'width=380,height=560,menubar=no,location=no,directories=no,scrollbars=no, left='+(window.screenX+200)+',top='+(window.screenY+100)); return false;\" href=\"http://www.copyrightsafeguard.com/safeguard/" . $copyrightsafeguardauth . "\" target=\"_blank\">Registered with Copyright Safeguard</a>";
 			}
+		echo '</div>';
 	}
 
 	add_action('wp_footer', 'copyrightsafeguardfn');

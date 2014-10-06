@@ -3,11 +3,23 @@
 $message = '';
 $copyrightsafeguardauth = get_option( 'copyrightsafeguardauth', '' );
 $csfnbuttontype = get_option( 'csfnbuttontype', 'button' );
+$csfnleftoffset = get_option( 'csfnleftoffset', '0' );
+$csfnleftoffsetunits = get_option( 'csfnleftoffsetunits', 'px' );
+$csfntopoffset = get_option( 'csfntopoffset', '0' );
+$csfntopoffsetunits = get_option( 'csfntopoffsetunits', 'px' );
 if($_POST['csfn_submit'] == 'Y') {
 	update_option( 'copyrightsafeguardauth', $_POST['copyrightsafeguardauth'] );
 	update_option( 'csfnbuttontype', $_POST['csfnbuttontype'] );
+	update_option( 'csfnleftoffset', $_POST['csfnleftoffset'] );
+	update_option( 'csfnleftoffsetunits', $_POST['csfnleftoffsetunits'] );
+	update_option( 'csfntopoffset', $_POST['csfntopoffset'] );
+	update_option( 'csfntopoffsetunits', $_POST['csfntopoffsetunits'] );
     $copyrightsafeguardauth = $_POST['copyrightsafeguardauth'];
     $csfnbuttontype = $_POST['csfnbuttontype'];
+    $csfnleftoffset = $_POST['csfnleftoffset'];
+    $csfnleftoffsetunits = $_POST['csfnleftoffsetunits'];
+    $csfntopoffset = $_POST['csfntopoffset'];
+    $csfntopoffsetunits = $_POST['csfntopoffsetunits'];
 	$message = '<p>Settings Saved</p>';
 }
 ?>
@@ -21,14 +33,16 @@ if($_POST['csfn_submit'] == 'Y') {
   <li>Add this website to your account.</li>
   <li>Go to the &quot;Get Code&quot; page and find your Copyright Safeguard Authorization Code.</li>
   <li>Enter the code below.</li>
-  <li>Select a button or link type.</li>
+  <li>Select a button or link type, and offset.</li>
   <li>Click &quot;Save&quot;</li>
 </ol>
 <hr />
-<label for="textfield">Copyright Safeguard Authorization Code:</label>
-  <input type="text" name="copyrightsafeguardauth" id="copyrightsafeguardauth" value="<?php echo $copyrightsafeguardauth; ?>">
-<br /><br />
-Button or link type to insert in page footer:
+<p>
+  <h3>Copyright Safeguard Authorization Code:</h3>
+  <input type="text" name="copyrightsafeguardauth" id="copyrightsafeguardauth" size="8" maxlength="6" value="<?php echo $copyrightsafeguardauth; ?>">
+<p>&nbsp;</p>
+<h3>Badge or link type to insert in page footer:
+</h3>
 <p>
   <label>
     <input name="csfnbuttontype" type="radio" id="button" value="button" <?php if ($csfnbuttontype == 'button') { echo 'checked="checked"'; } ?>>
@@ -43,6 +57,25 @@ Button or link type to insert in page footer:
     Text Link:  Registered with Copyright Safeguard</label>
   <br />
 </p>
+<p>&nbsp;</p>
+<h3>Position of badge or link in footer:</h3>
+<p>Left margin: 
+  <input type="text" name="csfnleftoffset" id="csfnleftoffset" size="6" maxlength="4" value="<?php echo $csfnleftoffset; ?>">
+  <select name="csfnleftoffsetunits" id="csfnleftoffsetunits">
+  <option <?php if ($csfnleftoffsetunits == 'px') { echo 'selected '; } ?> value="px">px</option>
+  <option <?php if ($csfnleftoffsetunits == 'em') { echo 'selected '; } ?> value="em">em</option>
+  <option <?php if ($csfnleftoffsetunits == 'rem') { echo 'selected '; } ?> value="rem">rem</option>
+  </select>
+</p>
+<p>Top margin: 
+  <input type="text" name="csfntopoffset" id="csfntopoffset" size="6" maxlength="4" value="<?php echo $csfntopoffset; ?>">
+  <select name="csfntopoffsetunits" id="csfntopoffsetunits">
+  <option <?php if ($csfntopoffsetunits == 'px') { echo 'selected '; } ?> value="px">px</option>
+  <option <?php if ($csfntopoffsetunits == 'em') { echo 'selected '; } ?> value="em">em</option>
+  <option <?php if ($csfntopoffsetunits == 'rem') { echo 'selected '; } ?> value="rem">rem</option>
+  </select>
+</p>
+<p>&nbsp;</p>
 <?php echo $message; ?>
 <p class="submit">
 <input type="submit" name="Submit" value="Save" />
