@@ -4,7 +4,7 @@
     Plugin URI: http://www.copyrightsafeguard.com/plugins/CopyrightSafeguard-fn.html
     Description: Embed a Copyright Safeguard link in the site footer.  Config in Settings.
     Author: Robert Nicholson
-    Version: 1.0
+    Version: 2.0
     Author URI: http://www.linkedin.com/in/bobnicholson/
     License: GPL2
     */
