@@ -24,7 +24,7 @@ if($_POST['csfn_submit'] == 'Y') {
 }
 ?>
 <div class="wrap">
-<h2>Copyright Safeguard Configuration</h2>
+<h2>Copyright Safeguard Configuration - Version 3.0</h2>
 <form name="csfn_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
 <input type="hidden" name="csfn_submit" value="Y">
 <h3>Instructions:</h3>
@@ -36,14 +36,25 @@ if($_POST['csfn_submit'] == 'Y') {
   <li>Select a button or link type, and offset.</li>
   <li>Click &quot;Save&quot;</li>
 </ol>
+<p>&nbsp;</p>
 <hr />
 <p>
   <h3>Copyright Safeguard Authorization Code:</h3>
   <input type="text" name="copyrightsafeguardauth" id="copyrightsafeguardauth" size="8" maxlength="6" value="<?php echo $copyrightsafeguardauth; ?>">
 <p>&nbsp;</p>
-<h3>Badge or link type to insert in page footer:
-</h3>
+<hr />
+<h3>Shortcode:</h3>
+<p>[copyrightsafeguard type="button"] &nbsp;&nbsp;&nbsp;<img src="http://www.copyrightsafeguard.com/images/copyright-safeguard.png" width="100" height="42"></p>
+<p>[copyrightsafeguard type="widebutton"] &nbsp;&nbsp;&nbsp;<img src="http://www.copyrightsafeguard.com/images/copyright-safeguard-wide.png" width="180" height="23"></p>
+<p>[copyrightsafeguard type="textlink"] &nbsp;&nbsp;&nbsp;Registered with Copyright Safeguard</p>
+<p>&nbsp;</p>
+<hr />
+<h3>Badge or link type to insert in page FOOTER:</h3>
 <p>
+  <label>
+    <input name="csfnbuttontype" type="radio" id="button" value="none" <?php if ($csfnbuttontype == 'none') { echo 'checked="checked"'; } ?>>
+    None</label>
+  <br />
   <label>
     <input name="csfnbuttontype" type="radio" id="button" value="button" <?php if ($csfnbuttontype == 'button') { echo 'checked="checked"'; } ?>>
     Button:&nbsp;&nbsp;&nbsp;<img src="http://www.copyrightsafeguard.com/images/copyright-safeguard.png" width="100" height="42"></label>
@@ -58,6 +69,7 @@ if($_POST['csfn_submit'] == 'Y') {
   <br />
 </p>
 <p>&nbsp;</p>
+<hr />
 <h3>Position of badge or link in footer:</h3>
 <p>Left margin: 
   <input type="text" name="csfnleftoffset" id="csfnleftoffset" size="6" maxlength="4" value="<?php echo $csfnleftoffset; ?>">

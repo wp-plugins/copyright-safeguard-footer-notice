@@ -3,15 +3,15 @@ Contributors: wygk
 Donate:
 Tags: copyright, footer
 Requires at least: 3.0.1
-Tested up to: 4.0
-Stable tag: 2.0
+Tested up to: 4.1.1
+Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Add a Copyright Safeguard notice in the site footer.   Clicking the notice opens a small pop-up window with information about copyright protection.  
+Add a Copyright Safeguard notice in the site footer, or as a shortcode.   Clicking the notice opens a small pop-up window with information about copyright protection.  
 == Description ==
 
-Places a Copyright Safeguard notice in the site's footer.  The notice can be a button or a simple text link.  Clicking the notice causes a small pop-up window to appear with information about the site's copyright protection.  Using this plugin requires the user to sign up for a free account on the Copyright Safeguard website, where the site's copyright information is stored.
+Places a Copyright Safeguard notice in the site's footer, or in the page content (using a shortcode).  The notice can be a button or a simple text link.  Clicking the notice causes a small pop-up window to appear with information about the site's copyright protection.  Using this plugin requires the user to sign up for a free account on the Copyright Safeguard website, where the site's copyright information is stored.
 
 
 == Installation ==
@@ -39,6 +39,9 @@ No. Copyright Safeguard is a free service.  There is a small fee to register you
 
 == Changelog ==
 
+= 3.0 =
+* Added shotcode capability.
+
 = 2.0 =
 * Added top and left margin offsets to control positioning of button or link in footer.
 
@@ -46,6 +49,9 @@ No. Copyright Safeguard is a free service.  There is a small fee to register you
 * Original version - no changes.
 
 == Upgrade Notice ==
+
+= 3.0 =
+* Added shotcode capability.
 
 = 2.0 =
 * Added top and left margin offsets to control positioning of button or link in footer.

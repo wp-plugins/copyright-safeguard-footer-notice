@@ -4,7 +4,7 @@
     Plugin URI: http://www.copyrightsafeguard.com/plugins/CopyrightSafeguard-fn.html
     Description: Embed a Copyright Safeguard link in the site footer.  Config in Settings.
     Author: Robert Nicholson
-    Version: 2.0
+    Version: 3.0
     Author URI: http://www.linkedin.com/in/bobnicholson/
     License: GPL2
     */
@@ -27,12 +27,12 @@
     	include('CopyrightSafeguard-fn-admin.php');
 	}
 	
-	add_action('admin_menu', 'copyrightsafeguardfn_adminactions');
-	
 	function copyrightsafeguardfn_adminactions() {
     	add_options_page('Copyright Safeguard Configuration', 'Copyright Safeguard','manage_options', 'CopyrightSafeguard-fn-admin.php', 'copyrightsafeguardfn_admin');
 	}
 
+	add_action('admin_menu', 'copyrightsafeguardfn_adminactions');
+	
 	function copyrightsafeguardfn() {
 		$copyrightsafeguardauth = get_option( 'copyrightsafeguardauth', '' );
 		$csfnbuttontype = get_option( 'csfnbuttontype', 'button' );
@@ -58,5 +58,27 @@
 	}
 
 	add_action('wp_footer', 'copyrightsafeguardfn');
+	
+	// [copyrightsafeguard type="button"]
+	function copyrightsafeguardfn_shortcode( $atts ) {
+	
+		$copyrightsafeguardauth = get_option( 'copyrightsafeguardauth', '' );
+		if ($atts['type'] == 'button')
+			{
+			$code = "<a onclick=\"window.open('http://www.copyrightsafeguard.com/safeguard/" . $copyrightsafeguardauth . "', 'Copyright', 'width=380,height=560,menubar=no,location=no,directories=no,scrollbars=no, left='+(window.screenX+200)+',top='+(window.screenY+100)); return false;\" href=\"http://www.copyrightsafeguard.com/safeguard/" . $copyrightsafeguardauth . "\" target=\"_blank\"><img src=\"http://www.copyrightsafeguard.com/images/copyright-safeguard.png\" width=\"100\" height=\"42\"></a>";
+			}
+		if ($atts['type'] == 'widebutton')
+			{
+			$code = "<a onclick=\"window.open('http://www.copyrightsafeguard.com/safeguard/" . $copyrightsafeguardauth . "', 'Copyright', 'width=380,height=560,menubar=no,location=no,directories=no,scrollbars=no, left='+(window.screenX+200)+',top='+(window.screenY+100)); return false;\" href=\"http://www.copyrightsafeguard.com/safeguard/" . $copyrightsafeguardauth . "\" target=\"_blank\"><img src=\"http://www.copyrightsafeguard.com/images/copyright-safeguard-wide.png\" width=\"180\" height=\"23\"></a>";
+			}
+		if ($atts['type'] == 'textlink')
+			{
+			$code = "<a onclick=\"window.open('http://www.copyrightsafeguard.com/safeguard/" . $copyrightsafeguardauth . "', 'Copyright', 'width=380,height=560,menubar=no,location=no,directories=no,scrollbars=no, left='+(window.screenX+200)+',top='+(window.screenY+100)); return false;\" href=\"http://www.copyrightsafeguard.com/safeguard/" . $copyrightsafeguardauth . "\" target=\"_blank\">Registered with Copyright Safeguard</a>";
+			}
+	
+		return $code;
+ 	}
+
+	add_shortcode( 'copyrightsafeguard', 'copyrightsafeguardfn_shortcode' );
 
 ?>
